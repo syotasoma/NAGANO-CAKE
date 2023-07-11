@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>管理者ログイン</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://kit.fontawesome.com/4337598bf6.js" crossorigin="anonymous"></script>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<!--動的なヘッダーの作成-->
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-dark">
+        <div class="container">
+          <!--ここにBookers-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+              <%= link_to "Nagano", admin_admin_path, class: 'nav-item navbar-brand' %>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to admin_about_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    About
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    商品一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_admin_item_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    新規登録
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_session_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    ログイン
+                  <% end %>
+                <% else %>
+                <!--#ここから先は各転移先を記入する。-->
+                <li class="nav-item">
+                  <%= link_to root_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    Home
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to about_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-link" aria-hidden="true"></i>
+                    About
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    Sign up
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                    Log in
+                  <% end %>
+                </li>
+                <% end %>  
+                </li>
+                
+              </ul>
+            </div>
+        </div>
+      </nav>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <main class="mb-auto">
+    <%= yield %>
+    </main>
+    <footer class="bg-white text-black">
+      <div class="mx-auto">
+        <p class="text-center">CopyRight Infratop.inc</p>
+      </div>
+    </footer>
+  </body>
+</html>
