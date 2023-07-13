@@ -7,21 +7,30 @@ Rails.application.routes.draw do
   sessions: "admin/sessions"
 }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "public/homes#top"
-  namespace :customer do
+  scope module: :public do
+  
+  root to: "homes#top"
+  get "/about" => "/homes#about"
+  get "/show" => "costomers#mypage"
+  get "/edit" => "customers#information"
+  get "/unsubscribe" => "customers#unsubscribe"
+  patch "/withdrawal" => "customers#withdrawal"
+  delete "/all_destroy" => "cart_items#all_destroy"
+  post "/confirm" => "orders#comfirm"
+  get "/complete" => "orders#complete"
   resources :items, only: [:index, :show]
   resources :registrations, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
   resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdrawal]
   resources :cart_items, only: [:index, :update, :destroy, :all_destroy, :create]
   resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
-end 
+  end 
   namespace :admin do
   resources :sessions, only: [:new, :create, :destroy]
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show]
-  get "/home/about" => "homes#about" , as: "about"
-  get "/admin" => "homes#top" , as: "admin"
+  root to: "homes#top"
+  get "/home/about" => "homes#about" 
 end
 end 
