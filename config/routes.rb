@@ -19,14 +19,11 @@ Rails.application.routes.draw do
   post "/confirm" => "orders#comfirm"
   get "/complete" => "orders#complete"
   resources :items, only: [:index, :show]
-  resources :registrations, only: [:new, :create]
-  resources :sessions, only: [:new, :create, :destroy]
   resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdrawal]
   resources :cart_items, only: [:index, :update, :destroy, :all_destroy, :create]
   resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   end 
   namespace :admin do
-  resources :sessions, only: [:new, :create, :destroy]
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show]

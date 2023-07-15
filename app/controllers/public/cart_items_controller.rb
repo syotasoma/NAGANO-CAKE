@@ -9,6 +9,9 @@ class Public::CartItemsController < ApplicationController
   end
   
   def update
+    @cart_item = Cart_items.find([:id])
+    @cart_item.update(curt_item_params)
+    redirect_to cart_items_path
   end 
   
   def destroy
@@ -20,4 +23,9 @@ class Public::CartItemsController < ApplicationController
   def all destroy
      @cart_items = Cart_item.all
   end
+  
+  private
+  def cart_item_params
+    params.require(:cart_item).permit(:item_id, :amount)
+  end 
 end
