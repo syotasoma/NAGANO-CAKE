@@ -1,7 +1,89 @@
+<body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light navbar-dark bg-dark">
+        <div class="container">
+          <!--ここにBookers-->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+              <%= link_to "Nagano", admin_root_path, class: 'nav-item navbar-brand' %>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <% if admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    商品一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_custmers_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    顧客一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_root_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    注文履歴一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    ログアウト
+                  <% end %>
+                <% else %>
+                <!--#ここから先は各転移先を記入する。-->
+                <li class="nav-item">
+                  <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    商品一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_custmers_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    顧客一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_root_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    注文履歴一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    ログアウト
+                  <% end %>
+                </li>
+                <% end %>  
+                </li>
+                
+              </ul>
+            </div>
+        </div>
+      </nav>
+    </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <main class="mb-auto">
+    <%= yield %>
+    </main>
+    <footer class="bg-white text-black">
+      <div class="mx-auto">
+        <p class="text-center">CopyRight Infratop.inc</p>
+      </div>
+    </footer>
+  </body>
+</html>
 <h1>商品一覧ページ</h1>
 <%= @items.each do |Item| %>
 <p>商品一覧: </p>
+<span><%= item.name %></span>
 <p>商品名:</p>
+<span><%= item.introduction %></span>
 <p>税抜き価格:</p>
-<p>ジャンル:</p>
-<p>ステータス:</p>
+<span><%= item.price %></span>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   scope module: :public do
   
   root to: "homes#top"
-  get "/about" => "/homes#about"
+  get "/about" => "homes#about"
   get "/show" => "costomers#mypage"
   get "/edit" => "customers#information"
   get "/unsubscribe" => "customers#unsubscribe"
@@ -28,6 +28,6 @@ Rails.application.routes.draw do
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show]
   root to: "homes#top"
-  get "/home/about" => "homes#about" 
+  get "/" => "homes#top" 
 end
 end 
