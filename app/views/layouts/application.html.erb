@@ -25,33 +25,59 @@
               <ul class="navbar-nav ml-auto">
                 <% if admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to admin_about_path, class: 'nav-link text-light' do %>
+                  <%= link_to admin_items_path, class: 'nav-link text-light' do %>
                     <i class="fas fa-home" aria-hidden="true"></i>
-                    About
+                    商品一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_items_path, class: 'nav-link text-light' do %>
+                  <%= link_to admin_customers_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    会員一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_root_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-book-open" aria-hidden="true"></i>
+                    注文履歴
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    ログアウト
+                  <% end %>
+                  <!--カスタマー側のリンクを作成-->
+                  <% elsif customer_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to show_path, class: 'nav-link text-light' do %>
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                    マイページ
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to items_path, class: 'nav-link text-light' do %>
                     <i class="fas fa-users" aria-hidden="true"></i>
                     商品一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to new_admin_item_path, class: 'nav-link text-light' do %>
+                  <%= link_to cart_items_path, class: 'nav-link text-light' do %>
                     <i class="fas fa-book-open" aria-hidden="true"></i>
-                    新規登録
+                    カート
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to new_admin_session_path, class: 'nav-link text-light' do %>
+                  <%= link_to destroy_customer_session_path,method: :delete, class: 'nav-link text-light' do %>
                     <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
-                    ログイン
+                    ログアウト
                   <% end %>
                 <% else %>
                 <!--#ここから先は各転移先を記入する。-->
                 <li class="nav-item">
                   <%= link_to about_path, class: 'nav-link text-light' do %>
-                    <i class="fas fa-home" aria-hidden="true"></i>
+                    <i class="fas fa-home" aria-hidden="true">
+                    </i>
                     About
                   <% end %>
                 </li>
@@ -68,7 +94,7 @@
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to customer_session_path, class: 'nav-link text-light' do %>
+                  <%= link_to new_customer_session_path, class: 'nav-link text-light' do %>
                     <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
                     ログイン
                   <% end %>

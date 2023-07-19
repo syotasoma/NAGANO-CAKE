@@ -1,1 +1,21 @@
-<<%= form_with model: @item do |f| %>
+<title>新規商品登録</title>
+<%= form_with model:@items do |f| %>
+<table>
+  <td>
+    <%= f.label :image, "商品画像" %><br />
+    <%= f.file_field :image, accept: "image/*" %>
+  </td>
+  <td>
+   <%= f.label :name, "商品名" %><br />
+   <%= f.text_field :name, autofocus: true %>
+  </td>
+  <td>
+    <%= f.label :introduction, "商品説明" %><br />
+    <%= f.text_area :introduction %> 
+  </td>
+  <td>
+    <%= f.label :price, "税抜き価格" %><br />
+    <%= f.text_field :price %> 円
+  </td>
+</table>
+<% end %>

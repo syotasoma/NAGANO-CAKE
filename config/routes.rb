@@ -28,6 +28,5 @@ Rails.application.routes.draw do
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show]
   root to: "homes#top"
-  get "/" => "homes#top" 
 end
 end 
