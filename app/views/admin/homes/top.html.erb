@@ -1,8 +1,28 @@
-<h1>商品一覧ページ</h1>
-<%= @items.each do |Item| %>
-<p>商品一覧: </p>
-<span><%= item.name %></span>
-<p>商品名:</p>
-<span><%= item.introduction %></span>
-<p>税抜き価格:</p>
-<span><%= item.price %></span>
+<h1>注文履歴一覧</h1>
+<%= @orders.each do |order| %>
+<p>購入日時: </p>
+<span><%= order.created_at %></span>
+<p>購入者:</p>
+<span><%= order.name %></span>
+<p>注文個数:</p>
+<span><%= order.order_items.inject(0) { |total, order_item| total + order_item.amount } %></span>
+<% end %>
+
+
+
+
+
+<!--１-->
+<!--< %= @orders.each do |order| %>-->
+<!--  < @商品合計 = 0 %>-->
+<!--  < %= order.order_items.each do |order_item| %>-->
+<!--    < % @商品合計 += order_item.amount %>-->
+<!--    a += b => a(新) = a(古) + b-->
+<!--  < % end %>-->
+<!--  < %= @商品合計 %>-->
+<!--< % end %>-->
+
+<!--２-->
+<!--< %= @orders.each do |order| %>-->
+<!--  < %= order.order_items.inject(0) { |total, order_item| total + order_item.amount } %>-->
+<!--< % end %>-->
