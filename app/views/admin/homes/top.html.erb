@@ -7,7 +7,7 @@
 <p>注文個数:</p>
 <span><%= order.order_items.inject(0) { |total, order_item| total + order_item.amount } %></span>
 <% end %>
-
+<%= paginate @orders %> 
 
 
 

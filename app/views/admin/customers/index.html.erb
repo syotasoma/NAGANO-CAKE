@@ -1,0 +1,19 @@
+<h1>会員一覧</h1>
+<%= @customers.each do |customer| %>
+<div class="row">
+    <div>会員ID</div>
+    <diV><%= customer.id %></diV>
+</div>
+    
+<div class="row">
+    <div>氏名</div>
+    <div><%= customer.last_name+customer.first_name %></div>
+</div>
+<div class="row">
+    <div>メールアドレス</div>
+    <div><%= customer.email %></div>
+</div>
+<% end %>
+<%= paginate @customers %>
+
+

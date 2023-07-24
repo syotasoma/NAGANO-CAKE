@@ -1,8 +1,20 @@
 <h1>商品一覧</h1>
-<%= @items.each do |Item| %>
-<p>商品一覧: </p>
-<span><%= item.name %></span>
-<p>商品名:</p>
-<span><%= item.introduction %></span>
-<p>税抜き価格:</p>
-<span><%= item.price %></span>
+<%= @items.each do |item| %>
+<div class="row">
+  <div>商品ID</div>
+  <div><%= item.id %></div>
+</div>
+  <div class="row">
+    <div>商品名</div>
+    <div>
+      <%= item.name %>
+    </div>
+  </div>
+<div class="row">
+  <div>税抜き価格</div>
+  <div>
+    <%= item.price %>
+  </div>
+</div>
+<% end %>
+<%= paginate @items %>
