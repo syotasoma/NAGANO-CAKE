@@ -1,0 +1,21 @@
+<h1>商品一覧</h1>
+<h4>(全×件)</h4>
+<div class="row">
+<% @items.each do |item| %>
+  <div class="col-3">
+   <div>
+     <%= image_tag item.get_item_image(100,100) %>
+   </div>
+   <div>
+      商品名
+   </div>
+   <diV>
+     <%= item.name %>
+   </diV>
+   <div>
+    ¥ <%= item.price %>
+   </div>
+  </div>
+</diV>
+<% end %>
+<%= paginate @items %>

@@ -1,5 +1,5 @@
-<title>新規商品登録</title>
-<%= form_with model: @items, url: admin_items_path do |f| %>
+<title>商品編集</title>
+<%= form_with model: @item, url: admin_item_path do |f| %>
 <table>
   <td>
     <%= f.label :item_image, "商品画像" %><br />
@@ -18,5 +18,5 @@
     <%= f.text_field :price %> 円
   </td>
 </table>
-<%= f.submit "新規登録" %>
+<%= f.submit "変更を保存" %>
 <% end %>

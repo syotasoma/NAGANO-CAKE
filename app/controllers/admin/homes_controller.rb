@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
-def index
-  @orders = Order..page(params[:page])
+def top
+  @orders = Order.page(params[:page])
 end 
 end

@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = item.all
+    @items = Item.page(params[:page])
   end
   def show
     @item = Item.find(params[:id])
@@ -8,6 +8,6 @@ class Public::ItemsController < ApplicationController
   
 private
   def item_params
-    params.require(:item).permit(:name,:introduction,:price)
+    params.require(:item).permit(:name,:price,:item_image)
   end 
 end
