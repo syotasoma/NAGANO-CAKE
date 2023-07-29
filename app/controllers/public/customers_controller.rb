@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
     def show
-        @custemor == current_customer
+        @customer = current_customer
     end 
     def edit
         @customer = current_customer
@@ -26,7 +26,7 @@ class Public::CustomersController < ApplicationController
     end 
 private
  def customer_params
-    params.require(:customer).permit(:last_name,:first_name,:customer_id,:postal_code,:address,:last_name_kana,:first_name_kana,:telephone_namber,:email,:is_deleted)
+    params.require(:customer).permit(:last_name,:first_name,:postal_code,:address,:last_name_kana,:first_name_kana,:telephone_number,:email,:is_deleted)
  end 
 end 
 
