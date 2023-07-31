@@ -1,8 +1,11 @@
 <h1>商品詳細</h1>
 <div class="row">
-  <div><%= @items.name %></div>
-  ¥　<div><%= @items.price*1.1 "(税込み)" %></div>
+  <div><%= @item.name %></div>
+  ¥ <div><%= @item.price * 1.1  %> (税込み)</div>
+  <%= form_with model: @cart_item do |f| %>
   <%= f.select :amount, *[1..10] %>
-  <%= link_to"カートに入れる", cart_items_path %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.submit "カートに入れる" %>
+  <% end %>
 </div>
 

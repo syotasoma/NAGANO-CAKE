@@ -14,9 +14,7 @@ class Public::CustomersController < ApplicationController
     end 
     end 
     def unsubscribe
-        @customer = current_customer
-        @customer.unsubscribe(customer_params)
-        redirect_to show_path
+      
     end
     def withdrawal
         @customer = current_customer

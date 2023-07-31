@@ -50,7 +50,7 @@
                   <!--カスタマー側のリンクを作成-->
                   <% elsif customer_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to show_path, class: 'nav-link text-light' do %>
+                  <%= link_to customers_mypage_path, class: 'nav-link text-light' do %>
                     <i class="fas fa-home" aria-hidden="true"></i>
                     マイページ
                   <% end %>

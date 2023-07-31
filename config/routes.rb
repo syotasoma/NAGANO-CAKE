@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   
   root to: "homes#top"
   get "/about" => "homes#about"
-  get "/show" => "costomers#mypage"
-  get "/edit" => "customers#information"
+  get "customers/mypage" => "customers#show"
+  get "customers/mypage/edit" => "customers#edit"
   get "/unsubscribe" => "customers#unsubscribe"
   patch "/withdrawal" => "customers#withdrawal"
   delete "/all_destroy" => "cart_items#all_destroy"

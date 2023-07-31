@@ -1,15 +1,24 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items = Cart_item.all
+    @cart_items = CartItem.all
+    @sum = 0
   end 
   
   def create
-    @cart_items = Cart_item.new(cart_item_params)
-    @cart_item.customer_id == current_customer
+    @cart_item = CartItem.new(cart_item_params)
+    @cart_item.customer_id = current_customer.id
+   if @cart_item.save
+    redirect_to cart_items_path
+    # 1. 追加した商品がカート内に存在するかの判別
+    #存在した場合
+    #  2. カート内の個数をフォームから送られた個数分追加する
+    #存在しなかった場合
+    #  カートモデルにレコードを新規作成する
+   end  
   end
   
   def update
-    @cart_item = Cart_items.find([:id])
+    @cart_item = CartItem.find([:id])
     @cart_item.update(curt_item_params)
     redirect_to cart_items_path
   end 
@@ -20,8 +29,8 @@ class Public::CartItemsController < ApplicationController
    redirect_to "/cart_items"
   end
   
-  def all destroy
-     @cart_items = Cart_item.all
+  def all_destroy
+     @cart_items = CartItem.all
   end
   
   private
