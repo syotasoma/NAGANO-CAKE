@@ -53,13 +53,14 @@
     
   </div>
 </div>
+<% end %>
 <%= form_with model: @order do |f| %>
-<%= f.hidden_field :payment_method %>
+<%= f.hidden_field :payment_method, :value => @order.payment_method%>
 <%= f.hidden_field :payment_amount, :value => @sum %>
 <%= f.hidden_field :postage %>
 <%= f.hidden_field :postalcode %>
 <%= f.hidden_field :address %>
 <%= f.hidden_field :name %>
 <%= f.submit "注文を確定する" %>
-<% end %>
+
 <% end %>

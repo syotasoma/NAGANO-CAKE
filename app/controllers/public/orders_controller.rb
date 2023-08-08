@@ -22,14 +22,32 @@ class Public::OrdersController < ApplicationController
   end 
   
   def index
+    @orders = Order.all
   end
   
   def create
-    @item = Order.new(order_params)
-    @order = @item.order.new(order_params)
+    @order = current_customer.orders.new(order_params)
+    # @order = Order.new(order_params)
+    # @order.customer_id = current_customer.id
     @order.save
-    redirect_to items_path
+    @cart_items = current_customer.cart_items.all
+    @cart_items.each do |cart_item|
+      @order_item = OrderItem.new
+      @order_item.order_id = @order.id
+      @order_item.item_id = cart_item.item_id
+      @order_item.priceattimeofpurchase = cart_item.item.with_tax_price
+      @order_item.amount = cart_item.amount
+      @order_item.save
+    end
+
+    @order.save
+    current_customer.cart_items.destroy_all
+    redirect_to complete_path
   end 
+  
+  def complete
+  end
+  
   def order_params
     params.require(:order).permit(:name, :payment_method, :payment_amount, :postage, :postalcode, :address)
   end 
