@@ -1,5 +1,5 @@
 <h1>会員情報編集</h1>
-<%= form_with model: @customers do |f| %>
+<%= form_with model: @customers, url: admin_customer_path, method: :patch do |f| %>
 <div class="row">
   <div class="col-md-4">
     <h4>氏名</h4>
@@ -35,7 +35,7 @@
     <h4>電話番号</h4>
   </div>
   <div class="col-md-4">
-    <%= f.telephone_field :telephone_namber %>
+    <%= f.telephone_field :telephone_number %>
   </div>
   <div class="col-md-4">
     <h4>メールアドレス</h4>

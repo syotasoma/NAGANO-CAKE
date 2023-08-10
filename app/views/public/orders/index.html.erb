@@ -3,7 +3,7 @@
     <thead>
         <tr>
             <th>注文日</th>
-            <th>配送日</th>
+            <th>配送先</th>
             <th>注文商品</th>
             <th>支払金額</th>
             <th>注文詳細</th>
@@ -13,7 +13,7 @@
 <tbody>
     <tr>
         <td>
-            <%= order.created_at %>
+            <%= order.created_at.strftime("%Y年 %m月 %d日") %>
         </td>
         <td>
            
@@ -22,7 +22,7 @@
         <td>
             <!--each文作成する-->
             <% order.order_items.each do |order_item| %>
-                 <%= order_item.name %>
+                 <%= order_item.item.name %>
             <% end %>
         </td>
         <td>

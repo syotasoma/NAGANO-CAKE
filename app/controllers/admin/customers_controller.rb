@@ -4,7 +4,7 @@ class Admin::CustomersController < ApplicationController
   end 
   
   def show
-    @customers = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
   end
   
   def edit
@@ -13,17 +13,17 @@ class Admin::CustomersController < ApplicationController
   
   def update
     @customers = Customer.find(params[:id])
-    if @customer.update(customer_params)
-      redirect_to customer_path(@customer.id)
+    if @customers.update(customer_params)
+      redirect_to admin_customer_path(@customers.id)
     else
       render :edit
-　  end
-　 end 
+    end
+  end 
  
   private
   
   def customer_params
-    params.require(:customer).permit(:last_name,:first_name,:customer_id,:paymen_method,:payment_amount,:postage,:postal_code,:address,)
+    params.require(:customer).permit(:last_name,:first_name,:customer_id,:paymen_method,:payment_amount,:postage,:postal_code,:address,:last_name_kana,:first_name_kana,:telephone_number)
   end 
 end 
 
