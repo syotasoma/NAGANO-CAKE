@@ -7,11 +7,22 @@
     
 <div class="row">
     <div>氏名</div>
-    <div><%= customer.last_name+customer.first_name %></div>
+    
+    <div><%= link_to customer.last_name+customer.first_name, customer_path(customer.id) %> </div>
 </div>
 <div class="row">
     <div>メールアドレス</div>
     <div><%= customer.email %></div>
+</div>
+<div class="row">
+    <div>ステータス</div>
+    <div><% if  customer.is_deleted %>
+    <div>退会済み</div>
+        <% else %>
+    <div>有効</div>
+        <% end %>
+</div>
+    
 </div>
 <% end %>
 <%= paginate @customers %>

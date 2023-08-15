@@ -9,7 +9,7 @@ class Admin::ItemsController < ApplicationController
     @items = Item.new(item_params)
     
     if @items.save
-      redirect_to admin_items_path
+      redirect_to admin_item_path(@items.id)
     end 
   end
   def show

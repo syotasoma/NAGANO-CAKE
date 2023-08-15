@@ -1,11 +1,28 @@
 <h1>注文履歴一覧</h1>
 <% @orders.each do |order| %>
-<p>購入日時: </p>
-<span><%= order.created_at %></span>
-<p>購入者:</p>
-<span><%= order.name %></span>
-<p>注文個数:</p>
-<span><%= order.order_items.inject(0) { |total, order_item| total + order_item.amount } %></span>
+<table>
+  <thead>
+    <tr>
+      <th>購入日時:</th>
+      <th>購入者:</th>
+      <th>注文個数:</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= order.created_at.strftime("%Y年 %m月 %d日")  %></td>
+      <td><%= order.name %></td>
+      <td><%= order.order_items.inject(0) { |total, order_item| total + order_item.amount } %></td>
+      <td><%= link_to "表示する", admin_order_path(order.id) %></td>
+    </tr>
+  </tbody>
+</table>
+<!--<p>購入日時: </p>-->
+<!--<span><%#= order.created_at %></span>-->
+<!--<p>購入者:</p>-->
+<!--<span><%#= order.name %></span>-->
+<!--<p>注文個数:</p>-->
+<!--<span><%#= order.order_items.inject(0) { |total, order_item| total + order_item.amount } %></span>-->
 <% end %>
 <%= paginate @orders %> 
 

@@ -5,7 +5,7 @@
 </div>
 <div class="row">
   <div>注文日</div>
-  <div><%= @order.update_at %></div>
+  <div><%= @order.created_at %></div>
 </div>
 <div class="row">
   <div>配送先</div>
@@ -17,14 +17,14 @@
   <div><%= @order.payment_method %></div>
 </div>
 <table>
-  <%= @item.each do |item| %>
+  <% @order_items.each do |order_item| %>
   <th>商品名</th>
-  <td><%= @items.name %></td>
-  <t
+  <td><%= order_item.item.name %></td>
+  <% end %>
 </table>
     
     
-<table>
+<!--<table>-->
   
-</table>
-全部<table></table>で記述
+<!--</table>-->
+<!--全部<table></table>で記述-->

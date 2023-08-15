@@ -1,22 +1,24 @@
-<title>新規商品登録</title>
+<h1>新規商品登録</h1>
 <%= form_with model: @items, url: admin_items_path do |f| %>
 <table>
-  <td>
-    <%= f.label :item_image, "商品画像" %><br />
-    <%= f.file_field :item_image, accept: "image/*" %>
-  </td>
-  <td>
-   <%= f.label :name, "商品名" %><br />
-   <%= f.text_field :name, autofocus: true %>
-  </td>
-  <td>
-    <%= f.label :introduction, "商品説明" %><br />
-    <%= f.text_area :introduction %> 
-  </td>
-  <td>
-    <%= f.label :price, "税抜き価格" %><br />
-    <%= f.text_field :price %> 円
-  </td>
+  <tbody>
+    <tr>
+      <th>商品画像</th>
+      <td><%= f.file_field :item_image, accept: "image/*" %></td>
+    </tr>
+    <tr>
+      <th>商品名</th>
+      <td><%= f.text_field :name, autofocus: true %></td>
+    </tr>
+    <tr>
+      <th>商品説明</th>
+      <td><%= f.text_area :introduction %> </td>
+    </tr>
+    <tr>
+      <th>税抜き価格</th>
+      <td><%= f.text_field :price %> 円</td>
+    </tr>
+  </tbody>
 </table>
 <%= f.submit "新規登録" %>
 <% end %>

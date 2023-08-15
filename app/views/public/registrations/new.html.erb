@@ -1,68 +1,121 @@
-<h2>Sign up</h2>
+<h2>新規会員登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :last_name, "姓" %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :first_name, "名" %><br />
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :last_name_kana, "姓カナ" %><br />
-    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :first_name_kana, "名カナ" %><br />
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
-  </div>
-  
-    <div class="field">
-    <%= f.label :postal_code, "郵便番号" %><br />
-    <%= f.text_field :postal_code, autocomplete: "postal_code" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :address, "住所" %><br />
-    <%= f.text_field :address, autocomplete: "address" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :telephone_number, "電話番号" %><br />
-    <%= f.text_field :telephone_number, autocomplete: "telephone_number" %>
-  </div>
-  
-   <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
+  <table>
+    <tbody>
+      <tr>
+        <th>姓</th>
+        <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+        <th>名</th>
+        <td><%= f.text_field :first_name, autocomplete: "first_name" %></td>
+      </tr>
+      <!--<tr>-->
+      <!--  <th>名</th>-->
+      <!--  <td><%#= f.text_field :first_name, autocomplete: "first_name" %></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <th>姓カナ</th>
+        <td><%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %></td>
+      </tr>
+      <tr>
+        <th>名カナ</th>
+        <td><%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <td><%= f.text_field :postal_code, autocomplete: "postal_code" %></td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td><%= f.text_field :address, autocomplete: "address" %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= f.text_field :telephone_number, autocomplete: "telephone_number" %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= f.email_field :email, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+        <th>パスワード</th>
+        <td><% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <%= f.password_field :password, autocomplete: "new-password" %></td>
+      </tr>
+      <tr>
+        <th>パスワード確認用</th>
+        <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit "新規登録" %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <h4>すでに登録済みの方</h4>
+  <p><%= link_to "こちら",new_customer_session_path %>からログインしてください。</p>
+  <!--<div class="field">-->
+  <!--  <%#= f.label :last_name, "姓" %><br />-->
+  <!--  <%#= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>-->
+  <!--</div>-->
+  
+  <!--<div class="field">-->
+  <!--  <%#= f.label :first_name, "名" %><br />-->
+  <!--  <%#= f.text_field :first_name, autocomplete: "first_name" %>-->
+  <!--</div>-->
+  
+  <!--<div class="field">-->
+  <!--  <%#= f.label :last_name_kana, "姓カナ" %><br />-->
+  <!--  <%#= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>-->
+  <!--</div>-->
+  
+  <!--<div class="field">-->
+  <!--  <%#= f.label :first_name_kana, "名カナ" %><br />-->
+  <!--  <%#= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>-->
+  <!--</div>-->
+  
+  <!--  <div class="field">-->
+  <!--  <%#= f.label :postal_code, "郵便番号" %><br />-->
+  <!--  <%#= f.text_field :postal_code, autocomplete: "postal_code" %>-->
+  <!--</div>-->
+  
+  <!--<div class="field">-->
+  <!--  <%#= f.label :address, "住所" %><br />-->
+  <!--  <%#= f.text_field :address, autocomplete: "address" %>-->
+  <!--</div>-->
+  
+  <!--<div class="field">-->
+  <!--  <%#= f.label :telephone_number, "電話番号" %><br />-->
+  <!--  <%#= f.text_field :telephone_number, autocomplete: "telephone_number" %>-->
+  <!--</div>-->
+  
+  <!-- <div class="field">-->
+  <!--  <%#= f.label :email, "メールアドレス" %><br />-->
+  <!--  <%#= f.email_field :email, autocomplete: "email" %>-->
+  <!--</div>-->
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード確認用" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+  <!--<div class="field">-->
+  <!--  <%#= f.label :password, "パスワード" %>-->
+  <!--  <% if @minimum_password_length %>-->
+  <!--  <em>(<%= @minimum_password_length %> characters minimum)</em>-->
+  <!--  <% end %><br />-->
+  <!--  <%#= f.password_field :password, autocomplete: "new-password" %>-->
+  <!--</div>-->
+
+  <!--<div class="field">-->
+  <!--  <%#= f.label :password_confirmation, "パスワード確認用" %><br />-->
+  <!--  <%#= f.password_field :password_confirmation, autocomplete: "new-password" %>-->
+  <!--</div>-->
   
   
 
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
-<% end %>
+  <!--<div class="actions">-->
+  <!--  <%#= f.submit "新規登録" %>-->
+  <!--</div>-->
 
 
-<p>すでに登録済みの方</p>
-<p><%= link_to "こちら",new_customer_session_path %>からログインしてください。</p>
+

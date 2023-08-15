@@ -1,24 +1,46 @@
 <h1>商品詳細</h1>
-<div class="row">
-  <div>
-    <%= image_tag @item.get_item_image(100,100) %>
+<div class="containar">
+  <div class="row  d-flex justify-content-center mt-5">
+    <div class="col-lg-4">
+      <%= image_tag @item.get_item_image(200,200) %>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+        <th>商品名</th>
+        <td><%= @item.name %></td>
+        </tr>
+        <tr>
+        <th>商品説明</th>
+        <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+        <th>税込み価格<br />
+            （税抜き価格）</th>
+        <td><%= @item.price*1.1 %> (<%= @item.price %>)円</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  <div class="row  d-flex justify-content-center mt-5">
+    <%= link_to "編集する", edit_admin_item_path %>
   </div>
 </div>
 
-<div class="row">
-  <div>商品名</div>
-  <%= @item.name %>
-</div>
-<div class="row">
-  <div>商品説明</div>
-  <%= @item.introduction %>
-</div>
-<div class="row">
-  <div>税込み価格</div><br />
-  <div>税抜き価格</div>
-  <%= @item.price*1.1 %> (<%= @item.price %>)
-</div>
-<%= link_to "編集する", edit_admin_item_path %>
+
+<!--<div class="row">-->
+<!--  <div>商品名</div>-->
+<!--  <%#= @item.name %>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--  <div>商品説明</div>-->
+<!--  <%#= @item.introduction %>-->
+<!--</div>-->
+<!--<div class="row">-->
+<!--  <div>税込み価格</div><br />-->
+<!--  <div>税抜き価格</div>-->
+<!--  <%#= @item.price*1.1 %> (<%#= @item.price %>)-->
+<!--</div>-->
 
 
 

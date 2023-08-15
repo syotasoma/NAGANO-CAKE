@@ -1,5 +1,6 @@
 <h1>商品詳細</h1>
 <div class="row">
+  <div><%= image_tag @item.get_item_image(100,100) %></div>
   <div><%= @item.name %></div>
   ¥ <div><%= (@item.price * 1.1).floor  %> (税込み)</div>
   <%= form_with model: @cart_item do |f| %>
