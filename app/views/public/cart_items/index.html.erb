@@ -20,6 +20,7 @@
        <%= f.select :amount, *[1..10] %>
        <%= f.hidden_field :item_id, :value => cart_item.item.id %>
       <% end %>
+      <td><%#= cart_item.item.amount %></td>
       <td><%= cart_item.item.with_tax_price*cart_item.amount %></td>
       <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %>
       <% @sum += cart_item.subtotal %>

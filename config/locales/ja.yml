@@ -141,8 +141,8 @@ ja:
       not_saved:
         one: エラーが発生したため %{resource} は保存されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
-  enum:
+  enums:
     order:
-    payment_method:
-      credit_card: "クレジットカード"
-      transfer: "銀行振り込み"
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振り込み"
