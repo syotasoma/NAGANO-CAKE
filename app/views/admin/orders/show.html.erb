@@ -5,22 +5,51 @@
 </div>
 <div class="row">
   <div>注文日</div>
-  <div><%= @order.created_at %></div>
+  <div><%= @order.created_at.strftime("%Y年 %m月 %d日") %></div>
 </div>
 <div class="row">
   <div>配送先</div>
+  <div><%= @order.postalcode %></div>
   <div><%= @order.address %></div>
   <div><%= @order.name %></div>
 </div>
 <div class="row">
   <div>支払い方法</div>
-  <div><%= @order.payment_method %></div>
+  <div><%= @order.payment_method_i18n %></div>
 </div>
+
 <table>
   <% @order_items.each do |order_item| %>
   <th>商品名</th>
+  <th>単価（税込み)</th>
+  <th>数量</th>
+  <th>小計</th>
+  <tr>
   <td><%= order_item.item.name %></td>
+  <td><%= (order_item.item.price*1.1).floor(0) %></td>
+  <td><%= order_item.amount %></td>
+  <td><%= order_item.subtotal %></td>
+  </tr>
+  <% @sum += order_item.subtotal %>
   <% end %>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th>商品合計</th>
+      <td><%= @sum %></td>
+    </tr>
+    <tr>
+      <th>送料</th>
+      <td><%= @order.postage %></td>
+    </tr>
+    <tr>
+      <th>請求金額</th>
+      <td><%= @sum+@order.postage %></td>
+    </tr>
+  </tbody>
+  
 </table>
     
     
